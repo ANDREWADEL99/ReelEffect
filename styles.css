@@ -3,35 +3,35 @@ body {
     margin: 0;
     padding: 0;
     background: #000;
+    height: 100vh;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    overflow: hidden; /* Prevent scrolling */
 }
 
 .reel-container {
-    width: 600px; /* Match the video width */
-    height: 1068px; /* Match the video height */
+    width: 100%;
+    height: 100%;
+    max-width: 600px; /* Maintain Instagram Reel resolution */
+    max-height: 1068px;
     overflow: hidden;
-    border-radius: 10px;
-    border: 3px solid #fff;
     position: relative;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-
-    /* Snap settings for perfect alignment */
-    scroll-snap-type: x mandatory;
+    border: 3px solid #fff;
+    border-radius: 10px;
 }
 
 .reel {
     display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: max-content;
-    scroll-snap-align: start;
+    flex-direction: column; /* Stack videos vertically */
+    height: 100%;
+    transition: transform 0.5s ease-in-out; /* Smooth transitions */
 }
 
 .reel video {
-    width: 600px; /* Match the target resolution */
-    height: 1068px;
-    flex-shrink: 0;
-    scroll-snap-align: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the container */
+    flex-shrink: 0; /* Prevent resizing */
 }
