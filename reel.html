@@ -1,19 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reel Effect</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="reel-container">
-        <div class="reel">
-            <video src="video1.mp4" controls muted loop></video>
-            <video src="video2.mp4" controls muted loop></video>
-            <video src="video3.mp4" controls muted loop></video>
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reel Scrolling</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app__videos">
+      <div class="video">
+        <video class="video__player" src="video1.mp4" muted loop></video>
+      </div>
+      <div class="video">
+        <video class="video__player" src="video2.mp4" muted loop></video>
+      </div>
+      <div class="video">
+        <video class="video__player" src="video3.mp4" muted loop></video>
+      </div>
     </div>
-    <script src="script.js"></script>
-</body>
+
+    <script>
+      const videos = document.querySelectorAll("video");
+
+      for (const video of videos) {
+        video.addEventListener("click", function () {
+          if (video.paused) {
+            video.play();
+          } else {
+            video.pause();
+          }
+        });
+      }
+    </script>
+  </body>
 </html>

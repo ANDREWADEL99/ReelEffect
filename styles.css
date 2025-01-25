@@ -1,37 +1,41 @@
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
-    background: #000;
+    box-sizing: border-box;
+  }
+  
+  body {
+    color: white;
+    background-color: black;
     height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Prevent scrolling */
-}
-
-.reel-container {
-    width: 100%;
-    height: 100%;
-    max-width: 600px; /* Maintain Instagram Reel resolution */
-    max-height: 1068px;
-    overflow: hidden;
+    display: grid;
+    place-items: center;
+  }
+  
+  .app__videos {
     position: relative;
-    border: 3px solid #fff;
-    border-radius: 10px;
-}
-
-.reel {
-    display: flex;
-    flex-direction: column; /* Stack videos vertically */
-    height: 100%;
-    transition: transform 0.5s ease-in-out; /* Smooth transitions */
-}
-
-.reel video {
+    height: 100vh; /* Full-screen height */
+    width: 100%; /* Full-screen width */
+    overflow-y: scroll; /* Vertical scroll */
+    scroll-snap-type: y mandatory; /* Snap on scroll */
+    -ms-overflow-style: none; /* Hide scrollbar for IE */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  }
+  
+  .app__videos::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari */
+  }
+  
+  .video {
+    position: relative;
+    height: 100vh; /* Full height for each video */
+    width: 100%; /* Full width for each video */
+    scroll-snap-align: start; /* Snap at the start of each video */
+  }
+  
+  .video__player {
+    object-fit: cover;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cover the container */
-    flex-shrink: 0; /* Prevent resizing */
-}
+  }
+  
