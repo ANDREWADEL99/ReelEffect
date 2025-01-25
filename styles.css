@@ -10,25 +10,28 @@ body {
 }
 
 .reel-container {
-    width: 90%;
-    max-width: 600px;
+    width: 600px; /* Match the video width */
+    height: 1068px; /* Match the video height */
     overflow: hidden;
     border-radius: 10px;
     border: 3px solid #fff;
     position: relative;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+
+    /* Snap settings for perfect alignment */
+    scroll-snap-type: x mandatory;
 }
 
 .reel {
     display: flex;
     transition: transform 0.5s ease-in-out;
     width: max-content;
+    scroll-snap-align: start;
 }
 
 .reel video {
-    width: 100%;
-    height: auto;
-    max-height: 500px;
-    object-fit: cover;
-    flex-shrink: 0;
+    width: 600px; /* Match the target resolution */
+    height: 1068px;
+    flex-shrink: 0;
+    scroll-snap-align: center;
 }
