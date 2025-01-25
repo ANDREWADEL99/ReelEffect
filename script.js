@@ -1,18 +1,32 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const reel = document.querySelector(".reel");
-    let scrollPosition = 0;
-    const videoWidth = reel.children[0].offsetWidth;
+let startX = 0;
+let isDragging = false;
 
-    document.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowRight") {
-            if (scrollPosition < reel.scrollWidth - videoWidth) {
-                scrollPosition += videoWidth;
-            }
-        } else if (e.key === "ArrowLeft") {
-            if (scrollPosition > 0) {
-                scrollPosition -= videoWidth;
-            }
+reel.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+});
+
+reel.addEventListener("touchmove", (e) => {
+    if (!isDragging) return;
+    const touchX = e.touches[0].clientX;
+    const deltaX = startX - touchX;
+
+    if (deltaX > 50) {
+        // Swipe left
+        if (scrollPosition < reel.scrollWidth - reel.offsetWidth) {
+            scrollPosition += videoWidth;
         }
-        reel.style.transform = `translateX(-${scrollPosition}px)`;
-    });
+        startX = touchX; // Reset startX for smooth swiping
+    } else if (deltaX < -50) {
+        // Swipe right
+        if (scrollPosition > 0) {
+            scrollPosition -= videoWidth;
+        }
+        startX = touchX; // Reset startX for smooth swiping
+    }
+    reel.style.transform = `translateX(-${scrollPosition}px)`;
+});
+
+reel.addEventListener("touchend", () => {
+    isDragging = false;
 });
