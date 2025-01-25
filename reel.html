@@ -7,6 +7,18 @@
     <title>Reels</title>
     <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <style>
+      /* Prevent full screen from taking over */
+      video::-webkit-media-controls-fullscreen-button {
+        display: none !important;
+      }
+      video::-moz-media-controls-fullscreen-button {
+        display: none !important;
+      }
+      video::-ms-media-controls-fullscreen-button {
+        display: none !important;
+      }
+    </style>
   </head>
   <body>
     <div class="app__videos">
@@ -68,10 +80,10 @@
 
       videos.forEach((video) => observer.observe(video));
 
-      // Disable the default full-screen functionality (if it exists)
+      // Prevent full screen on click
       videos.forEach((video) => {
         video.addEventListener('click', (event) => {
-          // This will prevent the video from going into full-screen mode automatically
+          // Disable default full-screen functionality
           event.preventDefault();
         });
       });
