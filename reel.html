@@ -14,7 +14,7 @@
         <!-- header starts -->
         <div class="videoHeader">
           <span class="material-icons"> arrow_back </span>
-		  <h3>Church Reel</h3>
+          <h3>Church Reel</h3>
         </div>
         <!-- header ends -->
 
@@ -67,6 +67,14 @@
       );
 
       videos.forEach((video) => observer.observe(video));
+
+      // Disable the default full-screen functionality (if it exists)
+      videos.forEach((video) => {
+        video.addEventListener('click', (event) => {
+          // This will prevent the video from going into full-screen mode automatically
+          event.preventDefault();
+        });
+      });
     </script>
   </body>
 </html>
